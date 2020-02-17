@@ -1,0 +1,14 @@
+include heart.pug
+
+svg.container
+  - var title = '母親節快樂';
+  text(
+    ="50%"
+  )
+    each c in title
+      tspan= c
+
+.flowerfall
+  - for (var i = 0; i < 20; i++)
+    +heart()
+
