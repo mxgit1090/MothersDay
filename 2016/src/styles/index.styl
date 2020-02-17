@@ -1,0 +1,53 @@
+$font_color_1= rgb(255,166,201)
+$font_color_2= rgb(253,222,238)
+
+body
+  display: flex;
+  background-color: rgb(228,114,191)
+  text-align: center
+  flex-direction: row
+  align-items: center
+  justify-content: center
+  font-size: 16px;
+  width:  100%
+  height: 100vh
+  overflow: hidden
+
+.charater
+  display: inline-block;
+  font-size: 4.5em
+  color: $font_color_1
+  
+frame1($scl, $rtt, $x)
+  display: inline-block
+  color: $font_color_1
+  -webkit-transform: scale($scl) rotate($rtt) translateX($x)
+  transform: scale($scl) rotate($rtt) translateX($x)
+  text-shadow: none
+  
+frame2($scl, $rtt, $x)
+  display: inline-block
+  color: $font_color_2
+  -webkit-transform: scale($scl) rotate($rtt) translateX($x)
+  transform: scale($scl) rotate($rtt) translateX($x)
+  text-shadow: 0 0 15px #f3e23e
+
+for $i in (1..20)
+  $m = ($i - 2.5) em
+  .f{$i}
+    $bit = heart_bit+$i
+    $sec_w=3.9s
+    $sec_p=$sec_w / 39
+    animation: $bit $sec_w ease infinite;
+    animation-delay: 0s + $sec_p * ($i - 1) 
+  @keyframes heart_bit{$i}
+    0%
+      frame1(1, 0, 0)
+    14%
+      frame2(1.5, 3deg  * $m, $m / 2.6)
+    28%
+      frame1(1, 0, 0);
+    42%
+      frame2(1.5, -3deg * $m, $m / 2.6)
+    70%
+      frame1(1, 0, 0); 

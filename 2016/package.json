@@ -1,0 +1,31 @@
+{
+  "name": "mothers-day-2016",
+  "version": "1.0.0",
+  "description": "The Mother's Day Card in 2016",
+  "homepage": "https://mxgit1090.github.io/MotherDay/2016",
+  "main": "index.js",
+  "author": "Mark Tsai",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "npx stylus -c -o dist/bundle.css src/styles/index.styl && npx rollup -c",
+    "dev": "concurrently \"npx stylus -c -o dist/bundle.css -w src/styles/index.styl\" \"npx rollup -c -w\"",
+    "start": "npx serve dist",
+    "predeploy": "npm run build",
+    "deploy": "npx gh-pages -d dist -e 2016"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "gh-pages": "^2.2.0",
+    "rollup": "^1.31.1",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-livereload": "^1.0.4",
+    "rollup-plugin-pug": "^1.1.1",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-watch": "^4.3.1",
+    "serve": "^11.3.0",
+    "stylus": "^0.54.7"
+  },
+  "dependencies": {}
+}
