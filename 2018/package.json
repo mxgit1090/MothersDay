@@ -9,7 +9,9 @@
   "scripts": {
     "build": "npx rollup -c",
     "dev": "npx rollup -c -w",
-    "start": "npx serve dist"
+    "start": "npx serve dist",
+    "predeploy": "npm run build",
+    "deploy": "npx gh-pages -d dist -e 2018"
   },
   "devDependencies": {
     "gh-pages": "^2.2.0",
