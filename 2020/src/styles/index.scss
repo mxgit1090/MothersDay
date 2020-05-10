@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&display=swap');
+
+$background-color: #262e6f;
+$text-color: wheat;
+
+$circle-radius: 120px;
+$particles: 24;
+$lap-duration: 4.8s;
+$rotate-item-fade-in-time: 0.4s; 
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $background-color;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: $text-color;
+  z-index: 10;
+  user-select: none;
+
+  /**
+   * animation valid syntax:
+   * [name] [duration] [iteration-count] [timing-function]
+   * [name] [duration] [fill-mode] [iteration-count] [timing-function]
+   * [name] [duration] [timing-function] [delay] [direction] [iteration-count] [fill-mode]
+   */
+
+  $text-number: 3;
+  .text {
+    font-family: "Dancing Script";
+    font-size: 56px;
+    opacity: 0;
+    $text-delay-ratio: 0.8s;
+    $text-light-start-time: 0.6s;
+    @for $i from 1 through $text-number {
+      &:nth-child(#{$i}) {
+        animation:
+          fade-in 1.6s ease-out #{($lap-duration - 1.2) + $i * $text-delay-ratio} normal 1 forwards,
+          text-light 0.8s ease-in #{$lap-duration + ($text-number * $text-delay-ratio) + $text-light-start-time} alternate 1 both;
+      }
+    }
+  }
+}
+
+
+
+.flower-container {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  animation: circle-fade $lap-duration both 1 linear;
+  .flower {
+    position: absolute;
+    animation:
+      fade-in $rotate-item-fade-in-time both 1 linear,
+      circle-rotate-reverse $lap-duration both infinite linear;
+    @for $i from 1 through $particles {
+      $angle: ($i / $particles) * 360;
+      &:nth-child(#{$i}) {
+        transform: rotate(#{$angle}deg) translate(0, -$circle-radius);
+        animation-delay: $i * ($lap-duration / $particles);
+      }
+    }
+    z-index: 20;
+    .heart {
+      position: relative;
+      top: 28px;
+      left: 24px;
+      width: 40px;
+      height: 40px;
+      animation: self-rotate 1s infinite linear;
+      & path {
+        fill: pink;
+      }
+      @for $i from 1 through 8 {
+        & path:nth-child(#{$i}) {
+          fill-opacity: #{0.5 - 0.0125 * $i};
+          transform: rotate(#{40 * $i}deg);
+          transform-origin: 12px 20px;
+        }
+      }
+    }
+  }
+}
+
+.circle-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: circle-fade $lap-duration both 1 linear;
+  .circle {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    background-color: wheat;
+    box-shadow:
+      0 0 2px 2px rgba(255, 255, 255, 0.5),
+      0 0 4px 4px rgba(255, 255, 255, 0.5);
+    transform: translate($circle-radius, 0);
+    animation:
+      fade-in $rotate-item-fade-in-time both 1 linear,
+      circle-rotate $lap-duration both infinite linear;
+    @for $i from 1 through $particles {
+      $angle: ($i / $particles) * 360;
+      &:nth-child(#{$i}) {
+        transform: rotate(#{$angle}deg)  translate(0, -$circle-radius);
+        animation-delay: $i * ($lap-duration / $particles);
+      }
+    }
+  }
+}
+
+
+@keyframes text-light {
+  100% {
+    text-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes circle-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@keyframes circle-rotate {
+  0% {
+    transform: rotate(0deg) translate(0, -$circle-radius);
+  }
+  100% {
+    transform: rotate(360deg) translate(0, -$circle-radius);
+  }
+}
+
+@keyframes circle-rotate-reverse {
+  0% {
+    transform: rotate(0deg) translate(0, $circle-radius);
+  }
+  100% {
+    transform: rotate(360deg) translate(0, $circle-radius);
+  }
+}
+
+@keyframes self-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
