@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&display=swap');
+@import './heart.scss';
+
+$lap-duration: 1.6s;
+$background-color: (
+#FC46AA,
+  #F699CD,
+  #FFB7C5,
+  #FFF1F3,
+);
+$text-color: #FFF7BD;
+$light-color: (#DCFFFB, #27fdf5);
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    to bottom,
+    #{$background-color}
+  );
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: -6rem;
+  color: $text-color;
+  font-weight: bold;
+  z-index: 10;
+  user-select: none;
+  $text-number: 3;
+  .text {
+    font-family: "Dancing Script";
+    font-size: 5.5rem;
+    opacity: 0;
+    $text-delay-ratio: 0.6s;
+    $text-light-start-time: 0.6s;
+    $light-delay-time: $lap-duration + ($text-number * $text-delay-ratio) + $text-light-start-time;
+    @for $i from 1 through $text-number {
+      &:nth-child(#{$i}) {
+        animation:
+          fadeInDown 1.6s ease-out #{($lap-duration - 1.2) + $i * $text-delay-ratio} normal 1 forwards,
+          fade-in 1.6s ease-out #{($lap-duration - 1.2) + $i * $text-delay-ratio} normal 1 forwards,
+          text-light 0.8s ease-in #{$lap-duration + ($text-number * $text-delay-ratio) + $text-light-start-time} alternate 1 both,
+          heartbeat 2.4s #{$light-delay-time + 2.4} infinite;
+      }
+    }
+  }
+}
+
+@keyframes text-light {
+  100% {
+    text-shadow: 0 0 16px nth($light-color, 1); //, 0 0 32px nth($light-color, 2);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+// From animate.css
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// https://stackoverflow.com/questions/34762009/pulsing-heart-css-animation
+@keyframes heartbeat {
+  0% {
+    text-shadow: 0 0 16px nth($light-color, 1);
+    // transform: scale( .75 );
+  }
+  20% {
+    text-shadow: 0 0 16px nth($light-color, 1), 0 0 32px nth($light-color, 2);
+    // transform: scale( 1 );
+  }
+  40% {
+    text-shadow: 0 0 16px nth($light-color, 1);
+    // transform: scale( .75 );
+  }
+  60% {
+    text-shadow: 0 0 16px nth($light-color, 1), 0 0 32px nth($light-color, 2);
+    // transform: scale( 1 );
+  }
+  80% {
+    text-shadow: 0 0 16px nth($light-color, 1);
+    // transform: scale( .75 );
+  }
+  100% {
+    text-shadow: 0 0 16px nth($light-color, 1);
+    // transform: scale( .75 );
+  }
+}

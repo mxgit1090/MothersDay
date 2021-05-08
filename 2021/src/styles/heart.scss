@@ -1,0 +1,21 @@
+.heart {
+  position: absolute;
+  margin-top: -5.5rem;
+  opacity: 0.1;
+  fill:  #FE4365;
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
