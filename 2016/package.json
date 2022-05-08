@@ -15,17 +15,17 @@
     "deploy": "npx gh-pages -d dist -e 2016"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0",
-    "gh-pages": "^2.2.0",
-    "rollup": "^1.31.1",
-    "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-livereload": "^1.0.4",
+    "concurrently": "^7.1.0",
+    "gh-pages": "^3.2.3",
+    "rollup": "^2.72.1",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-pug": "^1.1.1",
-    "rollup-plugin-serve": "^1.0.1",
-    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-watch": "^4.3.1",
-    "serve": "^11.3.0",
-    "stylus": "^0.54.7"
+    "serve": "^13.0.2",
+    "stylus": "^0.57.0"
   },
   "dependencies": {}
 }
