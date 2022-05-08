@@ -1,0 +1,12 @@
+include flower.pug
+include circleText.pug
+
+- const r = locals.r
+- const cx = locals.cx
+- const cy = locals.cy
+
+#container
+  +flower()
+  +circleText(r, cx, cy)
+  
+            

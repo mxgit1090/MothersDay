@@ -1,0 +1,43 @@
+// @see: https://codepen.io/faisalansari/pen/oNLOpGa
+$rotation: 36deg;
+// $size: 3.5vmin;
+$size: 1.6vmin;
+$border-radius-factor: 0.2vmin;
+// $hue: 210;
+$hue: 20;
+$box-shadow-factor: 0.25vmin;
+// $box-shadow-factor: 0;
+$delay: 30ms;
+$count: 20;
+
+#flower {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  .square {
+    position: absolute;
+    animation: name ease 1.5s alternate infinite;
+    @for $i from 1 through $count {
+      &:nth-child(#{$i}) {
+        width: $i * $size;
+        height: $i * $size;
+        z-index: $count - $i;
+        border-radius: 1vmin + $i * $border-radius-factor;
+        transform: translate(-50%, -50%) rotate($i * $rotation);
+        box-shadow: 0 0 $i * $box-shadow-factor rgba(0, 0, 0, 0.1);
+        animation-delay: $i * $delay;
+        animation-name: animate-#{$i};
+        background: mix(#FC46AA, #FFF1F3, $i / $count * 100%);
+        // background: mix(#FC46AA, #F699CD, $i / $count * 100%);
+        // background: mix(red, #FC46AA, $i / $count * 100%);
+      }
+    
+      @keyframes animate-#{$i} {
+        to {
+          transform: translate(-50%, -50%) rotate($i * $rotation) scale(0.75);
+        }
+      }
+    }
+  }
+  
+}

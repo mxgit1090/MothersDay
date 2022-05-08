@@ -1,0 +1,28 @@
+$text-color: #ceffbd;
+$light-color: (#DCFFFB, #27fdf5);
+
+// @see: https://codepen.io/Shaikat/pen/PapGpr
+#circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text {
+    font-family: "Dancing Script";
+    font-size: 24px;
+    font-weight: bold;
+    fill: $text-color;
+    user-select: none;
+    text-shadow: 0 0 16px nth($light-color, 1), 0 0 32px nth($light-color, 2);
+  }
+  svg {
+    animation-name: rotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    @keyframes rotate {
+        from { transform: rotate(360deg); }
+        to { transform: rotate(0); }
+    }
+  }
+}

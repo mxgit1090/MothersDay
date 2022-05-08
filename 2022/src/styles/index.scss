@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&display=swap');
+@import './flower.scss';
+@import './circleText.scss';
+
+$background-color: (
+#FC46AA,
+  #F699CD,
+  #FFB7C5,
+  #FFF1F3,
+);
+//$text-color: #FFF7BD;
+$text-color: #ceffbd;
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    to bottom,
+    #{$background-color}
+  );
+}
+
+#container {
+  margin: 0%;
+}

@@ -1,0 +1,34 @@
+mixin circleText(r, cx, cy)
+  #circle
+    svg(
+      version="1.1",
+      xmlns="http://www.w3.org/2000/svg",
+      xmlns:xlink="http://www.w3.org/1999/xlink",
+      viewBox=`0 0 ${cx * 2} ${cy * 2}`,
+      x="0px",
+      y="0px",
+      width=`${cx * 2}px`,
+      height=`${cy * 2}px`
+    )
+      defs
+        path#circlePath(d=`
+          M ${cx}, ${cy}
+          m -${r}, 0
+          a ${r},${r} 0 0,1 ${r * 2},0
+          a ${r},${r} 0 0,1 -${r * 2},0
+        `)
+        //- path#circlePath(d="M0,50 a50,50 0 1,1 0,1z")
+      //- circle(cx="150", cy="100", r="75", fill="#red")
+      g
+        text
+          textPath(xlink:href="#circlePath")
+            | Happy Mother's Day !!
+            | 2022
+            | Happy Mother's Day !!
+            | 2022
+            | Happy Mother's Day !!
+            | 2022
+            | Happy Mother's Day !!
+            | 2022
+            | Happy Mother's Day !!
+            | 2022
