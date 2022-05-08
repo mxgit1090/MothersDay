@@ -21,7 +21,7 @@
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-pug": "^1.1.1",
     "rollup-plugin-scss": "^3.0.0",
-    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-serve": "^1.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-watch": "^4.3.1"
   }
