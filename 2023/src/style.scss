@@ -60,7 +60,7 @@ h1 {
   display: block;
   width: $width;
   height: $height;
-  border-radius: $height / 2;
+  border-radius: calc($height / 2);
   background-color: $bg-color;
   transform-origin: center center;
   animation-name: rotate;
@@ -75,7 +75,7 @@ h1 {
     display: block;
     width: $width;
     height: $height;
-    border-radius: $height / 2;
+    border-radius: calc($height / 2);
     background-color: $bg-color;
   }
   &::after {
@@ -85,7 +85,7 @@ h1 {
     display: block;
     width: $width;
     height: $height;
-    border-radius: $height / 2;
+    border-radius: calc($height / 2);
     background-color: $bg-color;
   }
 }
