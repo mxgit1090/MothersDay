@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&display=swap');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  /* background-color: #242424; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: navy;
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+$light-color: (#DCFFFB, #27fdf5);
+$lap-duration: 1.6s;
+$text-delay-ratio: 0.6s;
+$text-light-start-time: 0.6s;
+$text-number: 3;
+$light-delay-time: $lap-duration + ($text-number * $text-delay-ratio) + $text-light-start-time;
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  text-align: center;
+  font-family: "Dancing Script";
+  animation: text-layer 3.6s infinite;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 300px;
+}
+
+@mixin flower(
+  $width: 300px,
+  $height: 100px,
+  $bg-color: pink,
+  $reversed: false,
+  $duration: 3.6s,
+) {
+  display: block;
+  width: $width;
+  height: $height;
+  border-radius: $height / 2;
+  background-color: $bg-color;
+  transform-origin: center center;
+  animation-name: rotate;
+  animation-duration: $duration;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: if($reversed, reverse, normal);
+  &::before {
+    content: '';
+    position: absolute;
+    transform: rotate(60deg);
+    display: block;
+    width: $width;
+    height: $height;
+    border-radius: $height / 2;
+    background-color: $bg-color;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    transform: rotate(-60deg);
+    display: block;
+    width: $width;
+    height: $height;
+    border-radius: $height / 2;
+    background-color: $bg-color;
+  }
+}
+
+.flower1 {
+  @include flower($bg-color: #F10066);
+}
+
+.flower2 {
+  @include flower(240px, 80px, #F62681, true);
+  position: absolute;
+  transform: translate(50%, 50%);
+  transform-origin: center center;
+  z-index: 11;
+}
+
+.flower3 {
+  @include flower(180px, 60px, #F85797, false);
+  position: absolute;
+  transform: translate(50%, 50%);
+  transform-origin: center center;
+  z-index: 12;
+}
+
+.flower4 {
+  @include flower(120px, 40px, #FF94B6, true);
+  position: absolute;
+  transform: translate(50%, 50%);
+  transform-origin: center center;
+  z-index: 13;
+}
+
+.flower5 {
+  @include flower(60px, 20px, #FFD1E3, false);
+  position: absolute;
+  transform: translate(50%, 50%);
+  transform-origin: center center;
+  z-index: 14;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(360deg); }
+  50% {
+    transform: rotate(180deg) scale(0.5);
+  }
+  100% { transform: rotate(0); }
+}
+
+@keyframes text-layer {
+  25% {
+    text-shadow: 0 0 16px nth($light-color, 1);
+  }
+  50% {
+    text-shadow: 0 0 16px nth($light-color, 1), 0 0 32px nth($light-color, 2);
+  }
+  75% {
+    text-shadow: 0 0 16px nth($light-color, 1);
+  }
+}
