@@ -45,8 +45,8 @@ const mainCtx = mainCanvas.getContext("2d");
 const textCtx = textCanvas.getContext("2d");
 
 // Settings
-const text = "母親節快樂！";
-const fontSize = 120;
+const text = "母親節快樂";
+const fontSize = 96;
 const samplingStep = 5;
 let textureCoordinates = []; // Store point coordinates
 let carnationCanvas = null; // Store processed carnation canvas
