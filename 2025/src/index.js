@@ -3,6 +3,13 @@ import { changeCarnationColor } from "./imageProcessor.js";
 // Import Web Font Loader
 import WebFont from "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/+esm";
 
+// Get base URL for assets
+const baseUrl =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "/"
+    : "/MothersDay/2025/";
+
 // Add base styles
 const style = document.createElement("style");
 style.textContent = `

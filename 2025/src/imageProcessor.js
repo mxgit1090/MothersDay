@@ -3,7 +3,10 @@ function loadImage(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => resolve(img);
-    img.onerror = reject;
+    img.onerror = (e) => {
+      console.error("Error loading image:", e);
+      reject(e);
+    };
     img.src = src;
   });
 }
@@ -21,11 +24,18 @@ function hexToRgb(hex) {
   return { r, g, b };
 }
 
+// Get base URL for assets
+const baseUrl =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "/"
+    : "/MothersDay/2025/";
+
 // Main function: Change carnation color
 export async function changeCarnationColor(targetColor) {
   try {
     // Load original image
-    const originalImage = await loadImage("src/image.png");
+    const originalImage = await loadImage(`${baseUrl}image.png`);
 
     // Create canvas for image processing
     const canvas = document.createElement("canvas");
@@ -73,11 +83,3 @@ export async function changeCarnationColor(targetColor) {
     throw error;
   }
 }
-
-// Usage example:
-// changeCarnationColor('#FF0000').then(canvas => {
-//     // Can append canvas to DOM
-//     document.body.appendChild(canvas);
-//     // Or convert to image URL
-//     const imageUrl = canvas.toDataURL('image/png');
-// });
